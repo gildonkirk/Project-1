@@ -54,10 +54,19 @@
 
 //GeoLocation not accepted my user - function. 
 
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-                              'Error: The Geolocation service failed.' :
-                              'Error: Your browser doesn\'t support geolocation.');
-        infoWindow.open(map);
-      }
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  infoWindow.setPosition(pos);
+  infoWindow.setContent(browserHasGeolocation ?
+                        'Error: The Geolocation service failed.' :
+                        'Error: Your browser doesn\'t support geolocation.');
+  infoWindow.open(map);
+}
+
+function streetAdd(){
+  $('#map').after('<p id="instruct">Log Trash Site:</p>');
+  $('#instruct').after('<form id="addEnter" class="form-inline"></form>');
+  $('#addEnter').append('<div id="form-group1" class="form-group"></div>');
+  $('#form-group1').append('<label for="street">Address</label>');
+  $('#form-group1').append('<input type="text" class="form-control" id="address" placeholder="123 Street, City, State Zip">');
+  $('#form-group1').append('<button type="submit" class="btn btn-default">Enter</button>')
+}
