@@ -1,4 +1,30 @@
-
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Test, Test, Test!</title>
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Bootstrap CDN-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Firebase Reference -->
+    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+    <style>
+     #map {
+      height: 400px;
+      width: 100%;
+     }
+    </style>
+  </head>
+  <body>
+    <h3> Trashie </h3>
+    <div id="map"></div>
+    <button id="save"> Save Trash Location </button>
+    <input type="text" id="latitude" />
+    <input type="text" id="longitude" />
+    <script>
+      
 // Global Variables
 // I made any internally declared variables global so that I could reuse them for other functions.  
       var map, infoWindow, pos, marker, point;
@@ -50,3 +76,10 @@
                               'Error: Your browser doesn\'t support geolocation.');
         infoWindow.open(map);
       }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2kbwUOaOFl_vuKHY08p2udg9eH8sOhV0&callback=initMap">
+    </script>
+<!--     <script src="logic2.js"></script> -->
+  </body>
+</html>
