@@ -65,5 +65,11 @@
 
 $(document).on('click', '.submitAddress', function(e){
   e.preventDefault();
-  console.log($('#address').val());
-})
+  var address = $('#address').val();
+   var geocoder = new google.maps.Geocoder();
+
+   geocoder.geocode({'address': address}, function (result) {
+      console.log(result[0].geometry.location.lat());
+      console.log(result[0].geometry.location.lng());
+   });
+});
