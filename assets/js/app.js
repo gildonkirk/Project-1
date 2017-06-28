@@ -51,8 +51,6 @@
         'Error: Your browser doesn\'t support geolocation.');
         infoWindow.open(map);
         streetAdd();
-        $(document).on('click', '.submitAddress', convert(){
-        });
       }
 
       function streetAdd(){
@@ -65,12 +63,7 @@
       }
 
 
-
-      function convert(e) {
-        e.preventDefault();
-        var address = $('#address').val();
-        var userLat = address.lat();
-        var userLong = address.lng();
-        console.log(userLat);
-        console.log(userLong);
-      };
+$(document).on('click', '.submitAddress', function(e){
+  e.preventDefault();
+  console.log($('#address').val());
+})
