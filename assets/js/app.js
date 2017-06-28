@@ -73,3 +73,5 @@ $(document).on('click', '.submitAddress', function(e){
       console.log(result[0].geometry.location.lng());
    });
 });
+
+// link to meet up api and have it so people can sign in to their meet up, and add or join events posted in the app
