@@ -17,4 +17,9 @@ td, th {
 
 tr:nth-child(even) {
     background-color: #dddddd;
+
+}
+
+#form-group1 {
+	margin-bottom: 5px;
 }

@@ -67,6 +67,11 @@ if (navigator.geolocation) {
 
 $("#save").on("click", function(event) {
           
+          point = marker.getPosition(); 
+          document.getElementById("latitude").value = point.lat();
+          document.getElementById("longitude").value = point.lng();
+        })
+      }
   point = marker.getPosition();
   date = moment().format("MM/DD/YY");
   time = moment().format("hh:mm:ss");
@@ -121,58 +126,40 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 function updateTable() {
   $("#trashTable").append("<tr><td id='date'>" + date + "</td><td id='time'>" + time + "</td><td id='point'>" +
   point + "</td><td id='user'>" + user + "</td></td>");
-
-  // ES: Updated function so id attribute was appended to each item
 }
 
-// function grabUserLocationDataAndHoldData() {
-//
-//     event.preventDefault();
-//
-//     // Grabs User's Data
-//     var getDateForDB = $("#date").val().trim();
-//     var getTimeForDB = $("#time").val().trim();
-//     var getPointForDB = $("#point").val().trim();
-//     var getUserForDB = $("#user").val().trim();
-//
-//     // Creates local "temporary" object for holding User's data
-//     var newLocationData = {
-//         date: getDateForDB,
-//         time: getTimeForDB,
-//         point: getPointForDB,
-//         user: getUserForDB
-//     };
-//
-//     // Uploads employee data to the database
-//     database.ref().push(newLocationData);
-//
-//     // Logs everything to console
-//     console.log(newLocationData.date);
-//     console.log(newLocationData.time);
-//     console.log(newLocationData.point);
-//     console.log(newLocationData.user);
-//
-//     // Alert
-//     alert("Trash location successfully added!");
-// }
 
-// // Firebase watcher + initial loader HINT: .on("value")
-// database.ref().on("value", function(snapshot) {
-//
-//     // Log everything that's coming out of snapshot
-//     console.log(snapshot.val());
-//     console.log(snapshot.val().date);
-//     console.log(snapshot.val().time);
-//     console.log(snapshot.val().point);
-//     console.log(snapshot.val().user);
-//
-//     // Change the HTML to reflect
-//     $("#date").html(snapshot.val().date);
-//     $("#time").html(snapshot.val().time);
-//     $("#point").html(snapshot.val().point);
-//     $("#user").html(snapshot.val().user);
-//
-//     // Handle the errors
-// }, function(errorObject) {
-//     console.log("Errors handled: " + errorObject.code);
-// });
+//GeoLocation not accepted my user - function. 
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+        'Error: The Geolocation service failed.' :
+        'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+        streetAdd();
+      }
+
+      function streetAdd(){
+        $('#map').after('<p id="instruct">Log Trash Site:</p>');
+        $('#instruct').after('<form id="addEnter" class="form-inline"></form>');
+        $('#addEnter').append('<div id="form-group1" class="form-group"></div>');
+        $('#form-group1').append('<label for="street">Address</label>');
+        $('#form-group1').append('<input type="text" class="form-control" id="address" placeholder="123 Street, City, State Zip">');
+        $('#form-group1').append('<button type="submit" class="submitAddress btn btn-default">Enter</button>')
+      }
+
+
+$(document).on('click', '.submitAddress', function(e){
+  e.preventDefault();
+  var address = $('#address').val();
+  var geocoder = new google.maps.Geocoder();
+
+   geocoder.geocode({'address': address}, function (result) {
+      var lat = result[0].geometry.location.lat();
+      var lng = result[0].geometry.location.lng();
+      $('#latitude').val(lat);
+      $('#longitude').val(lng);
+   });
+});
+
+
