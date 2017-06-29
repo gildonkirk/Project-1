@@ -66,11 +66,13 @@
 $(document).on('click', '.submitAddress', function(e){
   e.preventDefault();
   var address = $('#address').val();
-   var geocoder = new google.maps.Geocoder();
+  var geocoder = new google.maps.Geocoder();
 
    geocoder.geocode({'address': address}, function (result) {
-      console.log(result[0].geometry.location.lat());
-      console.log(result[0].geometry.location.lng());
+      var lat = result[0].geometry.location.lat();
+      var lng = result[0].geometry.location.lng();
+      $('#latitude').val(lat);
+      $('#longitude').val(lng);
    });
 });
 
