@@ -1,3 +1,14 @@
+var config = {
+      apiKey: "AIzaSyCpRAXgZfRwym9rBEfn_RmA2kpfStrIAXo",
+      authDomain: "project-1-88de6.firebaseapp.com",
+      databaseURL: "https://project-1-88de6.firebaseio.com",
+      projectId: "project-1-88de6",
+      storageBucket: "project-1-88de6.appspot.com",
+      messagingSenderId: "408567007214"
+  };
+
+firebase.initializeApp(config);
+var database = firebase.database();
 
 // Global Variables
 // I made any internally declared variables global so that I could reuse them for other functions.  
@@ -76,4 +87,3 @@ $(document).on('click', '.submitAddress', function(e){
    });
 });
 
-// link to meet up api and have it so people can sign in to their meet up, and add or join events posted in the app
