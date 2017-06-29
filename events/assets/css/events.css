@@ -1,0 +1,14 @@
+* {
+	box-sizing: border-box;
+}
+
+.create, .join {
+	float: left;
+	width: 50%;
+	font-size: 16pt;
+}
+
+.form-container {
+	float: left;
+	width: 90%;
+}
