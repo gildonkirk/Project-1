@@ -1,15 +1,3 @@
-var config = {
-      apiKey: "AIzaSyCpRAXgZfRwym9rBEfn_RmA2kpfStrIAXo",
-      authDomain: "project-1-88de6.firebaseapp.com",
-      databaseURL: "https://project-1-88de6.firebaseio.com",
-      projectId: "project-1-88de6",
-      storageBucket: "project-1-88de6.appspot.com",
-      messagingSenderId: "408567007214"
-  };
-
-firebase.initializeApp(config);
-var database = firebase.database();
-
 // Global Variables
 // I made any internally declared variables global so that I could reuse them for other functions.  
       var map, infoWindow, pos, marker, point;
@@ -28,7 +16,6 @@ var database = firebase.database();
               lng: position.coords.longitude
             };
           console.log(position)
-
 // Allows the marker to be movable and sets the marker to be displayed at the user's position.    
           marker = new google.maps.Marker({
             position: pos,
