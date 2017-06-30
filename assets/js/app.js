@@ -1,7 +1,7 @@
 // Global Variables
 // I made any internally declared variables global so that I could reuse them for other functions.  
 
-var map, infoWindow, pos, marker, point, date, time, user;
+var map, infoWindow, pos, marker, latitude, longitude, point, date, time, user;
 
 // Initializes map - AKA - starts and displays the map on our web-page.
       
@@ -66,19 +66,15 @@ if (navigator.geolocation) {
 //clicking on save updates the lat and long on html and table.
 
 $("#save").on("click", function(event) {
-          
-          point = marker.getPosition(); 
-          document.getElementById("latitude").value = point.lat();
-          document.getElementById("longitude").value = point.lng();
-        })
-      }
-  point = marker.getPosition();
+
+  latitude = marker.getPosition().lat();
+  longitude = marker.getPosition().lng();
   date = moment().format("MM/DD/YY");
   time = moment().format("hh:mm:ss");
   user = "";
 
-  document.getElementById("latitude").value = point.lat();
-  document.getElementById("longitude").value = point.lng();
+  document.getElementById("latitude").value = latitude;
+  document.getElementById("longitude").value = longitude;
 
   updateTable();
 
@@ -91,8 +87,8 @@ $("#save").on("click", function(event) {
     var newLocationData = {
         date: date,
         time: time,
-        lat: point.lat(),
-        lng: point.lng(),
+        lat: latitude,
+        lng: longitude,
         user: user
     };
 
@@ -102,8 +98,8 @@ $("#save").on("click", function(event) {
     // Logs everything to console
     console.log(date);
     console.log(time);
-    console.log(point.lat());
-    console.log(point.long());
+    console.log(latitude);
+    console.log(longitude);
 
     // Alert
     alert("Trash location successfully added!");
@@ -125,7 +121,8 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 function updateTable() {
   $("#trashTable").append("<tr><td id='date'>" + date + "</td><td id='time'>" + time + "</td><td id='point'>" +
-  point + "</td><td id='user'>" + user + "</td></td>");
+  latitude + "</td><td id='point'>" +
+  longitude + "</td><td id='user'>" + user + "</td></td>");
 }
 
 
@@ -155,11 +152,42 @@ $(document).on('click', '.submitAddress', function(e){
   var geocoder = new google.maps.Geocoder();
 
    geocoder.geocode({'address': address}, function (result) {
-      var lat = result[0].geometry.location.lat();
-      var lng = result[0].geometry.location.lng();
-      $('#latitude').val(lat);
-      $('#longitude').val(lng);
-   });
+      latitude = result[0].geometry.location.lat();
+      longitude = result[0].geometry.location.lng();
+      $('#latitude').val(latitude);
+      $('#longitude').val(longitude);
+      console.log(latitude);
+      console.log(longitude);
+      document.getElementById("longitude").value = longitude;
+
+      date = moment().format("MM/DD/YY");
+      time = moment().format("hh:mm:ss");
+      user = '';
+
+      updateTable();
+
+        // Grabs User's Da
+        // Creates local "temporary" object for holding User's data
+        var newLocationData = {
+            date: date,
+            time: time,
+            lat: latitude,
+            lng: longitude,
+            user: user
+        };
+        database = firebase.database();
+        // Uploads employee data to the database
+        database.ref().push(newLocationData);
+
+        // Logs everything to console
+        console.log(date);
+        console.log(time);
+        console.log(latitude);
+        console.log(longitude);
+
+        // Alert
+        alert("Trash location successfully added!");
+      });
 });
 
 
