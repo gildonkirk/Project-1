@@ -67,11 +67,6 @@ if (navigator.geolocation) {
 
 $("#save").on("click", function(event) {
           
-          point = marker.getPosition(); 
-          document.getElementById("latitude").value = point.lat();
-          document.getElementById("longitude").value = point.lng();
-        })
-      }
   point = marker.getPosition();
   date = moment().format("MM/DD/YY");
   time = moment().format("hh:mm:ss");
@@ -96,14 +91,14 @@ $("#save").on("click", function(event) {
         user: user
     };
 
-    // Uploads employee data to the database
+    // Uploads data to the database
     database.ref().push(newLocationData);
 
     // Logs everything to console
     console.log(date);
     console.log(time);
     console.log(point.lat());
-    console.log(point.long());
+    console.log(point.lng());
 
     // Alert
     alert("Trash location successfully added!");
