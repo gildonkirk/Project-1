@@ -61,7 +61,7 @@ function initMap() {
   var database = firebase.database();
 
   //clicking on save updates the lat and long on html and table.
-  $("#save").on("click", function(event) {
+  $(document).on("click", '#save', function(event) {
 
     latitude = marker.getPosition().lat();
     longitude = marker.getPosition().lng();
@@ -74,6 +74,9 @@ function initMap() {
 
     updateTable();
 
+// Need to chang this so it is grabbing data from firebase instead of website
+    tableData.push(new google.maps.LatLng(latitude, longitude));
+    console.log(tableData);
     // grabUserLocationDataAndHoldData();
     event.preventDefault();
 
@@ -209,10 +212,9 @@ function changeOpacity() {
   heatmap.set('opacity', heatmap.get('opacity') ? null : 0.2);
 }
 
+var tableData = [];
 // Heatmap data: 500 Points
 function getPoints() {
-  return [
-    new google.maps.LatLng(38.9502497, -77.01614359999996),
-  ];
+  return tableData;
 };
 
