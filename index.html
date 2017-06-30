@@ -38,6 +38,12 @@
    	</nav>
    	
 	<div class="container-fluid">
+		<div id="floating-panel">
+		  <button class="optionsBtn" id="onOff" onclick="toggleHeatmap()">Toggle Heatmap</button>
+		  <button class="optionsBtn" id="grade" onclick="changeGradient()">Change gradient</button>
+		  <button class="optionsBtn" id="radius" onclick="changeRadius()">Change radius</button>
+		  <button class="optionsBtn" id="opacity" onclick="changeOpacity()">Change opacity</button>
+		</div>
 	    <div id="map"></div>
 
 	    <button id="save"> Save Trash Location </button>
@@ -56,7 +62,7 @@
 
 
 		<script async defer
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2kbwUOaOFl_vuKHY08p2udg9eH8sOhV0&callback=initMap">
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2kbwUOaOFl_vuKHY08p2udg9eH8sOhV0&libraries=visualization&callback=initMap">
 		</script>
 
 		<script type="text/javascript" src="assets/js/app.js"></script>
