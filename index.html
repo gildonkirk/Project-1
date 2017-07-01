@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
 
-  <head>
-
+<head>
     <meta charset="UTF-8">
     <title>Test, Test, Test!</title>
     <!-- jQuery -->
@@ -18,32 +17,56 @@
 
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
-  </head>
+</head>
 
-  <body>
+<body>
 
-    <h3> Trashie </h3>
-    <div id="map"></div>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+	    	<div class="navbar-header">
+	      		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	     		</button>
+	      		<a class="navbar-brand" href="index.html">Trashie</a>
+   			</div>
 
-    <button id="save"> Save Trash Location </button>
-    <input type="text" id="latitude" />
-    <input type="text" id="longitude" />
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="events/events.html">Events</a></li>
+				</ul>
+		    </div>
+   		</div>
+   	</nav>
+   	
+	<div class="container-fluid">
+		<div id="floating-panel">
+		  <button class="optionsBtn" id="onOff" onclick="toggleHeatmap()">Toggle Heatmap</button>
+		  <button class="optionsBtn" id="grade" onclick="changeGradient()">Change gradient</button>
+		  <button class="optionsBtn" id="radius" onclick="changeRadius()">Change radius</button>
+		  <button class="optionsBtn" id="opacity" onclick="changeOpacity()">Change opacity</button>
+		</div>
+	    <div id="map"></div>
 
-    <table id="trashTable">
-	  <tr>
-	    <th>Date</th>
-	    <th>Time</th>
-	    <th>Location</th>
-	    <th>User</th>
-	  </tr>
-	</table>
+	    <button id="save"> Save Trash Location </button>
+	    <input type="text" id="latitude" />
+	    <input type="text" id="longitude" />
+
+	    <table id="trashTable">
+		  <tr>
+		    <th>Date</th>
+		    <th>Time</th>
+		    <th>Latitude</th>
+		    <th>Longitude</th>
+		    <th>User</th>
+		  </tr>
+		</table>
 
 
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2kbwUOaOFl_vuKHY08p2udg9eH8sOhV0&callback=initMap">
-    </script>
+		<script async defer
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2kbwUOaOFl_vuKHY08p2udg9eH8sOhV0&libraries=visualization&callback=initMap">
+		</script>
 
-    <script type="text/javascript" src="assets/js/app.js"></script>
+		<script type="text/javascript" src="assets/js/app.js"></script>
+	</div>
 
   </body>
 

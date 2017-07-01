@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+
+    	<!-- jquery -->
+  	<script
+  		src="https://code.jquery.com/jquery-3.2.1.min.js"
+  		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  		crossorigin="anonymous"></script>
+
+    <!-- Bootstrap CDN CSS-->
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  	<!-- bootstrap JS-->
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   
+    <!-- Firebase Reference -->
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+
+	<!-- Style Sheet -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+
+</head>
+
+<body>
+
+
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+	    	<div class="navbar-header">
+	      		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	     		</button>
+	      		<a class="navbar-brand" href="index.html">Trashie</a>
+   			</div>
+
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="events/events.html">Events</a></li>
+				</ul>
+		    </div>
+   		</div>
+   	</nav>
+
+
+	
+   	<div class="container">
+
+   		<input id="txtEmail" type= "email" placeholder="Email">
+
+   		<input id="txtPassword" type= "password" placeholder="Password">
+
+   		<button id="btnLogin" class="btn btn-action">
+   			Log in
+   		</button>
+
+   		<button id="btnSignUp" class="btn btn-secondary">
+   			Sign Up
+   		</button>
+
+   		<button id="btnLogout" class="btn btn-action hide">
+   			Log Out
+   		</button>
+   	</div>
+
+	<script type="text/javascript" src="assets/js/login.js"></script>
+
+  </body>
+
+</html>
