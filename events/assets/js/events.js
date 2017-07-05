@@ -16,33 +16,23 @@ firebase.initializeApp(config);
 var database = firebase.database();
 
 var eventCount = 0;
-var eventName = '';
-var eventDescrip = '';
-var trashPoint = '';
-var eventDate = '';
-var eventTime = '';
+$(document).on('click', '.submit', function(e){
+	e.preventDefault();
+	eventCount++;
+	var eventName = $('#name').val();
+	var eventDescrip = $('#description').val();
+	var trashPoint = $('#meet').val();
+	var eventDate = $('#meetDate').val();
+	var eventTime = $('#meetTime').val();
 
-var eventInfo = {
+	var eventInfo = {
 	count: eventCount,
 	name: eventName,
 	description: eventDescrip,
 	address: trashPoint,
 	date: eventDate,
 	time: eventTime
-}
+	}
 
-$(document).on('click', '.submit', function(e){
-	e.preventDefault();
-	eventCount++;
-	eventName = $('#name').val();
-	eventDescrip = $('#description').val();
-	trashPoint = $('#meet').val();
-	eventDate = $('#meetDate').val();
-	eventTime = $('#meetTime').val();
-	console.log(eventName);
-	console.log(eventDescrip);
-	console.log(trashPoint);
-	console.log(eventDate);
-	console.log(eventTime);
-	// database.ref().push
+	database.ref('events').push(eventInfo);
 });
