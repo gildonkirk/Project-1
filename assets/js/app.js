@@ -57,8 +57,17 @@ function initMap() {
 
   firebase.initializeApp(config);
 
+
   // Create a variable to reference the database.
   var database = firebase.database();
+
+
+  database.ref().on("child_added", function(childSnapshot) {
+    user = firebase.auth().currentUser.email;
+    if(user === childSnapshot.val().user) {
+      updateTable();
+    }
+  });
 
   //clicking on save updates the lat and long on html and table.
   $(document).on("click", '#save', function(event) {
@@ -67,14 +76,13 @@ function initMap() {
     longitude = marker.getPosition().lng();
     date = moment().format("MM/DD/YY");
     time = moment().format("hh:mm:ss");
-    user = "";
+    user = firebase.auth().currentUser.email
 
     document.getElementById("latitude").value = latitude;
     document.getElementById("longitude").value = longitude;
 
-    updateTable();
+    // updateTable();
 
-// Need to chang this so it is grabbing data from firebase instead of website
     tableData.push(new google.maps.LatLng(latitude, longitude));
     console.log(tableData);
     // grabUserLocationDataAndHoldData();
@@ -82,16 +90,14 @@ function initMap() {
 
     // Grabs User's Da
     // Creates local "temporary" object for holding User's data
-    var newLocationData = {
+    database.ref('trashData').push({
         date: date,
         time: time,
         lat: latitude,
         lng: longitude,
         user: user
-    };
-
-    // Uploads employee data to the database
-    database.ref().push(newLocationData);
+    });
+    
 
     // Logs everything to console
     console.log(date);
@@ -175,9 +181,6 @@ $(document).on('click', '.submitAddress', function(e){
     alert("Trash location successfully added!");
   });
 });
-
-
-
 
 
 function toggleHeatmap() {

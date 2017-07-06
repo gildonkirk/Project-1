@@ -75,3 +75,32 @@ $(document).ready(function(){
 
 });
 
+
+  // checks to see if the user is logged in.  If not- redirect 
+
+  // firebase.auth().onAuthStateChanged(function(users) {
+  // if (users) {
+   
+  // } else {
+  //   redirect()
+  // }
+  // });
+
+  // //function for redirecting user
+  //  function redirect() {
+  //   document.location.href ="file:///C:/Users/szell/Desktop/Class/trashie/Project-1/login.html";
+  //   }
+
+  //function to locate user points
+//   function userPointLocation() {
+//      database.ref().on("value", function(snapshot) {
+//       if (user == firebase.auth().currentUser.email) 
+//       for (var i = 0, i < l; i++) {
+//         var obj = data.messages[i];
+//     // ...
+// }
+
+//          $("#trashTable").append("<tr><td id='date'>" + date + "</td><td id='time'>" + time + "</td><td id='point'>" +
+//           latitude + "</td><td id='point'>" + longitude + "</td><td id='user'>" + user + "</td></td>")}
+//      }
+//   }
