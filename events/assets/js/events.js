@@ -14,7 +14,9 @@ var config = {
 
 firebase.initializeApp(config);		
 var database = firebase.database();
-
+$(document).ready(function() {
+	database.ref(1).push();
+})
 var eventCount = 0;
 $(document).on('click', '.submit', function(e){
 	e.preventDefault();
@@ -25,14 +27,13 @@ $(document).on('click', '.submit', function(e){
 	var eventDate = $('#meetDate').val();
 	var eventTime = $('#meetTime').val();
 
-	var eventInfo = {
-	count: eventCount,
-	name: eventName,
-	description: eventDescrip,
-	address: trashPoint,
-	date: eventDate,
-	time: eventTime
-	}
-
-	database.ref('events').push(eventInfo);
+	database.ref('events/event ID: ' + eventCount).set({
+		name: eventName,
+		description: eventDescrip,
+		address: trashPoint,
+		date: eventDate,
+		time: eventTime
+	});
 });
+
+
